@@ -8,15 +8,7 @@ let tiles = [];
 function setup() {
 	initCanvas();
 
-	tiles.push(new Tile(0, 0));
-	tiles.push(new Tile(1, -width/2));
-	tiles.push(new Tile(2, -width));
-	tiles.push(new Tile(3, -3*width/2));
-
-	tiles.push(new Tile(3, -2*width));
-	tiles.push(new Tile(2, -5*width/2));
-	tiles.push(new Tile(1, -3*width));
-	tiles.push(new Tile(0, -7*width/2));
+	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/4);
 }
 
 function initCanvas() {
@@ -38,10 +30,11 @@ function gameClick(evt) {
 	let rectangle = evt.target.getBoundingClientRect();
 	let position = new Vector(evt.clientX - rectangle.left, evt.clientY - rectangle.top);
 
-	for(let i = 0; i < tiles.length; i++) {
+	for(let i = tiles.length - 1; i >= 0; i--) {
 		if(tiles[i].isPositionIn(position)) {
 			tiles.splice(i, 1);
-			i--;
+			i++;
+			break;
 		}
 	}
 }

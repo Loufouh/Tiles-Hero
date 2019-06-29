@@ -4,6 +4,10 @@ function loop() {
 	background( new Color(100, 100, 255) );
 	drawSeparators();
 
+	if(tiles.length > 0 && tiles[0].position.y >= height) {
+		tiles.shift();
+	}
+
 	tiles.forEach( tile => {
 		tile.update();
 		tile.draw();
