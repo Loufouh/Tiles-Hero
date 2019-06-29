@@ -36,6 +36,12 @@ function initCanvas() {
 }
 
 function gameClick(evt) {
-	let rect = evt.target.getBoundingClientRect();
-	let pos = new Vector(evt.clientX - rect.left, evt.clientY - rect.top);
+	let rectangle = evt.target.getBoundingClientRect();
+	let position = new Vector(evt.clientX - rectangle.left, evt.clientY - rectangle.top);
+
+	tiles.forEach( tile => {
+		if(tile.isIn(position)) {
+			tile.click();
+		}
+	});
 }

@@ -7,7 +7,7 @@ class Tile {
 	}
 
 	click() {
-		this.clicked = true;
+		this.isClicked = true;
 	}
 
 	update() {
@@ -27,7 +27,40 @@ class Tile {
 			fill(new Color(52));
 		}
 
-		let shiftSize = gameWidth/80
-		rect((width - gameWidth)/2 + this.position.x*gameWidth/4 + shiftSize, this.position.y, gameWidth/4 - 2*shiftSize, gameWidth/3);
+		rect(
+			 this.absolutePosition().x,
+			 this.absolutePosition().y,
+			 Tile.tileWidth(),
+			 Tile.tileHeight()
+			);
+	}
+
+	isIn(position) {
+		if( (position.x >= this.absolutePosition().x && position.x <= this.absolutePosition().x + Tile.tileWidth()) &&
+		    (position.y >= this.absolutePosition().y && position.y <= this.absolutePosition().y + Tile.tileHeight()))
+			return true;
+		else
+			return false;
+	}
+
+	absolutePosition() {
+		return new Vector(gameBorderSize() + this.position.x*gameWidth/4 + Tile.shiftSize(), this.position.y);
+	}
+
+	static tileHeight() {
+		return Tile.tileWidth()*1.618;
+	}
+
+	static tileWidth() {
+		return gameWidth/4 - 2*Tile.shiftSize();
+	}
+
+	static shiftSize() {
+		return gameWidth/80;
 	}
 }
+
+function gameBorderSize() {
+	return (width - gameWidth)/2
+}
+
