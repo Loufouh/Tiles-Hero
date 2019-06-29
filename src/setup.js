@@ -8,6 +8,19 @@ let tiles = [];
 function setup() {
 	initCanvas();
 
+	document.body.addEventListener('keydown', (evt) => {
+		if(evt.key === 'j' && tiles[0].position.x === 0)
+			tiles.shift();
+		else if(evt.key === 'k' && tiles[0].position.x === 1)
+			tiles.shift();
+		else if(evt.key === 'l' && tiles[0].position.x === 2)
+			tiles.shift();
+		else if(evt.key === ';' && tiles[0].position.x === 3)
+			tiles.shift();
+	});
+
+	alert('To play with a key board, you can use "j, k, l, ;" keys');
+
 	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/4);
 }
 
