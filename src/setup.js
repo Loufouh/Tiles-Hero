@@ -21,7 +21,7 @@ function setup() {
 
 	alert('To play with a key board, you can use "j, k, l, ;" keys');
 
-	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/4);
+	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/3);
 }
 
 function initCanvas() {
