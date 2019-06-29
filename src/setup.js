@@ -31,7 +31,7 @@ function initCanvas() {
 	gameWidth = 95*canvas.width/100;
 	gameHeight = 95*canvas.height/100;
 
-	canvas.addEventListener('click', gameClick);
+	canvas.addEventListener('mousedown', gameClick);
 }
 
 function gameClick(evt) {
