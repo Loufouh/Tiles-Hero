@@ -6,26 +6,17 @@ class Tile {
 		this.isClicked = false;
 	}
 
-	click() {
-		this.isClicked = true;
-	}
-
 	update() {
-		this.position.y += 4;
+		this.position.y += 10;
 	}
 
 	draw() {
 		lineCap("round");
 
-		if(this.isClicked) {
-			noStroke();
-			fill(new Color(88));
-		} else {
-			strokeWeight(2);
-			stroke(new Color(100));
+		strokeWeight(2);
+		stroke(new Color(100));
 
-			fill(new Color(52));
-		}
+		fill(new Color(52));
 
 		rect(
 			 this.absolutePosition().x,
@@ -35,7 +26,7 @@ class Tile {
 			);
 	}
 
-	isIn(position) {
+	isPositionIn(position) {
 		if( (position.x >= this.absolutePosition().x && position.x <= this.absolutePosition().x + Tile.tileWidth()) &&
 		    (position.y >= this.absolutePosition().y && position.y <= this.absolutePosition().y + Tile.tileHeight()))
 			return true;

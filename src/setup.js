@@ -17,7 +17,6 @@ function setup() {
 	tiles.push(new Tile(2, -5*width/2));
 	tiles.push(new Tile(1, -3*width));
 	tiles.push(new Tile(0, -7*width/2));
-
 }
 
 function initCanvas() {
@@ -39,9 +38,10 @@ function gameClick(evt) {
 	let rectangle = evt.target.getBoundingClientRect();
 	let position = new Vector(evt.clientX - rectangle.left, evt.clientY - rectangle.top);
 
-	tiles.forEach( tile => {
-		if(tile.isIn(position)) {
-			tile.click();
+	for(let i = 0; i < tiles.length; i++) {
+		if(tiles[i].isPositionIn(position)) {
+			tiles.splice(i, 1);
+			i--;
 		}
-	});
+	}
 }

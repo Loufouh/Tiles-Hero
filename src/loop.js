@@ -8,7 +8,6 @@ function loop() {
 		tile.update();
 		tile.draw();
 	});
-
 }
 
 function drawSeparators() {
