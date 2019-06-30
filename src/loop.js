@@ -12,6 +12,11 @@ function loop() {
 		tile.update();
 		tile.draw();
 	});
+	
+	killedTiles.forEach( tile => {
+		tile.update();
+		tile.draw();
+	});
 }
 
 function drawSeparators() {

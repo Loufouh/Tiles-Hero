@@ -23,7 +23,11 @@ class Tile {
 			 this.absolutePosition().y,
 			 Tile.width(),
 			 Tile.height()
-			);
+		    );
+	}
+
+	kill() {
+		killedTiles.push(new KilledTile(this.absolutePosition().x + Tile.width()/2, this.absolutePosition().y + Tile.height()/2));
 	}
 
 	isPositionIn(position) {
