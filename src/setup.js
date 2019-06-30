@@ -1,5 +1,9 @@
 'use strict';
 
+let originalBackgroundColor = new Color(100, 100, 255);
+let targetBackgroundColor = originalBackgroundColor;
+let backgroundColor = originalBackgroundColor;
+
 let width, height;
 let gameWidth, gameHeight;
 
@@ -33,8 +37,21 @@ function setup() {
 	alert('To play with a keyboard, you can use "j, k, l, ;" keys');
 
 	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/3);
+	setInterval( () => {
+		let colors = [ 
+				new Color(100, 100, 255), new Color(100, 255, 100), new Color(100, 255, 255),
+				new Color(255, 100, 100), new Color(255, 100, 255), new Color(255, 255, 100),
+				new Color(255, 255, 255)
+			     ]
 
-	killed = new KilledTile(new Vector(width/2, height/2));
+		backgroundColor = originalBackgroundColor = targetBackgroundColor;
+		targetBackgroundColor = randomElement(colors);
+
+		document.body.style.backgroundColor = 'rgb(' + ( (targetBackgroundColor.r === 255)? 100: 52) + ','
+						      + ( (targetBackgroundColor.g === 255)? 100: 52) + ','
+						      + ( (targetBackgroundColor.b === 255)? 100: 52) + ')';
+	}, 20000);
+
 }
 
 function initCanvas() {

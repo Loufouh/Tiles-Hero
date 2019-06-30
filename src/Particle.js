@@ -22,7 +22,7 @@ class Particle {
 			return;
 
 		noStroke();
-		fill(new Color(255, 255, 100, this.opacity));
+		fill(new Color(255 - backgroundColor.r, 255 - backgroundColor.g, 255 - backgroundColor.b, this.opacity));
 
 		circle(this.position.x, this.position.y, this.radius);
 	}

@@ -6,8 +6,11 @@ body {
 
 	justify-content: center;
 	align-items: center;
+
+	transition: background-color 13s;
 }
 
 canvas { 
 	border-radius: 3px;
 }
+

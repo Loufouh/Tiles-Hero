@@ -1,7 +1,9 @@
 "use strict"
 
 function loop() {
-	background( new Color(100, 100, 255) );
+	updateBackground();
+	background(backgroundColor);
+
 	drawSeparators();
 
 	if(tiles.length > 0 && tiles[0].position.y >= height) {
@@ -17,6 +19,15 @@ function loop() {
 		tile.update();
 		tile.draw();
 	});
+}
+
+function updateBackground() {
+	if(backgroundColor.r !== targetBackgroundColor.r)
+		backgroundColor.r += (targetBackgroundColor.r - originalBackgroundColor.r)/240;
+	if(backgroundColor.g !== targetBackgroundColor.g)
+		backgroundColor.g += (targetBackgroundColor.g - originalBackgroundColor.g)/240;
+	if(backgroundColor.b !== targetBackgroundColor.b)
+		backgroundColor.b += (targetBackgroundColor.b - originalBackgroundColor.b)/240;
 }
 
 function drawSeparators() {
