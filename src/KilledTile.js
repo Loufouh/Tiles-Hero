@@ -5,8 +5,8 @@ class KilledTile {
 		this.position = new Vector(x, y);
 		this.particles = [];
 
-		for(let i = 0; i < randomInt(40, 50); i++) {
-			this.particles.push(new Particle(this.position.x + random(-10, 10), this.position.y + random(-10, 10), random(-1, 1), random(-1, 1)));
+		for(let i = 0; i < randomInt(50, 60); i++) {
+			this.particles.push(new Particle(this.position.x + random(-10, 10), this.position.y + random(-10, 10), random(-10, 10), random(-40, -1), random(1, 5)));
 		}
 	}
 

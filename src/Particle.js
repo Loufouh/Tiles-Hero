@@ -1,11 +1,12 @@
 'use strict';
 
 class Particle {
-	constructor(x, y, speedX, speedY) {
+	constructor(x, y, speedX, speedY, radius) {
 		this.position = new Vector(x, y);
 		this.velocity = new Vector(speedX, speedY);
 
-		this.radius = randomInt(1, 5);
+		this.radius = radius;
+		this.opacity = 1;
 	}
 
 	update() {
@@ -13,14 +14,15 @@ class Particle {
 		this.position.y += this.velocity.y;
 
 		this.radius -= 0.05;
+		this.opacity -= 0.01;
 	}
 
 	draw() {
 		if(this.radius <= 0)
 			return;
-		strokeWeight(2);
-		stroke(new Color(255, 255, 52));
-		fill(new Color(255, 255, 100));
+
+		noStroke();
+		fill(new Color(255, 255, 100, this.opacity));
 
 		circle(this.position.x, this.position.y, this.radius);
 	}

@@ -27,7 +27,10 @@ class Tile {
 	}
 
 	kill() {
-		killedTiles.push(new KilledTile(this.absolutePosition().x + Tile.width()/2, this.absolutePosition().y + Tile.height()/2));
+		let killed = new KilledTile(this.absolutePosition().x + Tile.width()/2, this.absolutePosition().y + Tile.height()/2); 
+		killedTiles.push(killed);
+
+		setTimeout( () => killedTiles.splice(killedTiles.indexOf(killed), 1), 5000);
 	}
 
 	isPositionIn(position) {

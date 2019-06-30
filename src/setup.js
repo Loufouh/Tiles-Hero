@@ -12,6 +12,9 @@ function setup() {
 	initCanvas();
 
 	document.body.addEventListener('keydown', (evt) => {
+		if(tiles.length === 0)
+			return;
+
 		if(evt.key === 'j' && tiles[0].position.x === 0) {
 			tiles[0].kill();
 			tiles.shift();
