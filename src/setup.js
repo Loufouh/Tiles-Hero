@@ -1,5 +1,7 @@
 'use strict';
 
+let scoreText;
+
 let originalBackgroundColor = new Color(100, 100, 255);
 let targetBackgroundColor = originalBackgroundColor;
 let backgroundColor = originalBackgroundColor;
@@ -13,28 +15,29 @@ let killedTiles = [];
 let killed;
 
 function setup() {
+	scoreText = document.getElementById('scoreText');
 	initCanvas();
 
 	document.body.addEventListener('keydown', (evt) => {
 		if(tiles.length === 0)
 			return;
 
-		if(evt.key === 'j' && tiles[0].position.x === 0) {
+		if(evt.key === 'h' && tiles[0].position.x === 0) {
 			tiles[0].kill();
 			tiles.shift();
-		} else if(evt.key === 'k' && tiles[0].position.x === 1) {
+		} else if(evt.key === 'j' && tiles[0].position.x === 1) {
 			tiles[0].kill();
 			tiles.shift();
-		} else if(evt.key === 'l' && tiles[0].position.x === 2) {
+		} else if(evt.key === 'k' && tiles[0].position.x === 2) {
 			tiles[0].kill();
 			tiles.shift();
-		} else if(evt.key === ';' && tiles[0].position.x === 3) {
+		} else if(evt.key === 'l' && tiles[0].position.x === 3) {
 			tiles[0].kill();
 			tiles.shift();
 		}
 	});
 
-	alert('To play with a keyboard, you can use "j, k, l, ;" keys');
+	alert('To play with a keyboard, you can use "h, j, k, l" keys');
 
 	setInterval( () => tiles.push(new Tile(randomInt(0, 4), -width/2)), 1000/3);
 	setInterval( () => {

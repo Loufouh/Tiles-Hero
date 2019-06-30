@@ -16,7 +16,9 @@ class Tile {
 		strokeWeight(2);
 		stroke(new Color(100));
 
-		fill(new Color(52));
+		let colorBrightness = 52 + (-(backgroundColor.r + backgroundColor.g + backgroundColor.b)/3 + 255)*48/155;
+
+		fill(colorBrightness);
 
 		rect(
 			 this.absolutePosition().x,
@@ -28,6 +30,7 @@ class Tile {
 
 	kill() {
 		let killed = new KilledTile(this.absolutePosition().x + Tile.width()/2, this.absolutePosition().y + Tile.height()/2); 
+
 		killedTiles.push(killed);
 
 		setTimeout( () => killedTiles.splice(killedTiles.indexOf(killed), 1), 5000);
